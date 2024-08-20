@@ -1,0 +1,1072 @@
+<html lang="en">
+<head>
+    <title>Landlord-Tenant Agreements</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- 
+        BORRAR CUANDO FULLY TESTED 
+        Moved from before script tags, check if necessary or if above is enough 
+        <script src="/assets/js/jquery-3.5.0.min.js"></script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script> 
+        BORRAR CUANDO FULLY TESTED 
+    -->
+</head>
+
+<body>
+
+<!-- TENANTS SECTION -->  
+  <div class="container"> 
+    <h1 class="text-center">Landlord/Tenant Agreements</h1>
+    <h2 class="text-left">Tenants</h2>
+    <br></br>
+
+    <!-- Tenants Table -->
+    <table class="table table-hover table-striped" id="tenantsTable">
+      <thead>
+        <tr>  <!-- Row headings Tenants table -->
+          <th style="width: 13%">Title</th>
+          <th style="width: 13%">First Name</th>
+          <th style="width: 13%">Last Name</th>
+          <th style="width: 13%">Mobile</th>
+          <th style="width: 13%">Email</th>
+          <th style="width: 13%">AddressID</th>
+          <th class="text-center" style="width: 22%">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each tenant}}
+        <tr > <!-- Rows for each tenant saved -->
+          <td style="width: 13%">"{{title}}"</td>
+          <td style="width: 13%">{{fname}}</td>
+          <td style="width: 13%">"{{lname}}"</td>
+          <td style="width: 13%">{{mobile}}</td>
+          <td style="width: 13%">"{{email}}"</td>
+          <td style="width: 13%">"{{addressID}}"</td>
+          <td class="text-right" style="width: 22%">
+            <a href="javascript:void(0);" class="btn btn-sm btn-info update" data-id="{{_id}}" data-title="{{title}}" data-fname="{{fname}}" data-lname="{{lname}}" 
+            data-mobile="{{mobile}}" data-email="{{email}}">Update</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{_id}}" data-title="{{title}}" data-fname="{{fname}}" data-lname="{{lname}}" 
+            data-mobile="{{mobile}}" data-email="{{email}}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <!-- Below table -->
+    <div>
+        <!-- Add tenant button-->
+        <button class="btn btn-primary mr-5" data-toggle="modal" data-target="#addTenantModal" id = "tenantAddButton">Add</button>
+        <br></br>
+        <br></br>
+        <!-- Search Tenants -->
+        <div class="input-group mb-3" style ="width: 100%;">
+            <input class="form-control py-2  border" type="search" placeholder="Find by email a Tenant's details" id="searchTenants" style="width: 25%";> 
+            <button class="btn btn-success" type="button" id="tenantSearchButton" style="width: 20%">Find</button>
+        </div>
+    </div>
+  </div>
+  <br></br>
+<!-- TENANTS SECTION --> 
+
+
+<!-- LANDLORDS SECTION -->  
+  <div class="container"> 
+    <h2 class="text-left">Landlords</h2>
+    <br></br>
+
+    <!-- Landlords Table -->
+    <table class="table table-hover table-striped" id="landlordsTable">
+      <thead>
+        <tr>  <!-- Row headings Landlords table -->
+          <th style="width: 8%">Title</th>
+          <th style="width: 8%">First Name</th>
+          <th style="width: 8%">Last Name</th>
+          <th style="width: 8%">Mobile</th>
+          <th style="width: 8%">Email</th>
+          <th style="width: 8%">DoB</th>
+          <th style="width: 8%">Permit</th>
+          <th style="width: 8%">Email Contact</th>
+          <th style="width: 8%">AddressID</th>
+          <th class="text-center" style="width: 28%">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each landlord}}
+        <tr > <!-- Rows for each Landlord saved -->
+          <td style="width: 8%">"{{title}}"</td>
+          <td style="width: 8%">{{fname}}</td>
+          <td style="width: 8%">"{{lname}}"</td>
+          <td style="width: 8%">{{mobile}}</td>
+          <td style="width: 8%">"{{email}}"</td>
+          <td style="width: 8%">"{{dob}}"</td>
+          <td style="width: 8%">{{permit}}</td>
+          <td style="width: 8%">"{{emailContact}}"</td>
+          <td style="width: 8%">"{{addressID}}"</td>
+          <td class="text-right" style="width: 28%">
+            <a href="javascript:void(0);" class="btn btn-sm btn-info update" data-id="{{_id}}" data-title="{{title}}" data-fname="{{fname}}" data-lname="{{lname}}" 
+            data-mobile="{{mobile}}" data-email="{{email}}" data-dob="{{dob}}" data-permit="{{permit}}" data-emailContact="{{emailContact}}">Update</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{_id}}" data-title="{{title}}" data-fname="{{fname}}" data-lname="{{lname}}" 
+            data-mobile="{{mobile}}" data-email="{{email}}" data-dob="{{dob}}" data-permit="{{permit}}" data-emailContact="{{emailContact}}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <!-- Below table -->
+    <div>
+        <!-- Add Landlord button-->
+        <button class="btn btn-primary mr-5" data-toggle="modal" data-target="#addLandlordModal">Add</button>
+        <br></br>
+        <br></br>
+        <!-- Search Landlords -->
+        <div class="input-group mb-3" style ="width: 100%;">
+            <input class="form-control py-2  border" type="search" placeholder="Find by email a Landlord's details" id="searchLandlord" style="width: 25%";> 
+            <button class="btn btn-success" type="button" id="landlordSearchButton" style="width: 20%">Find</button>
+        </div>
+    </div>
+  </div>
+  <br></br>
+<!-- LANDLORDS SECTION --> 
+
+<!-- CONTRACTS SECTION -->  
+  <div class="container"> 
+    <h2 class="text-left">Contracts</h2>
+    <br></br>
+
+    <!-- Contracts Table -->
+    
+    <table class="table table-hover table-striped" id="contractsTable" style="font-size: small;">
+      <thead>
+        <tr>  <!-- Row headings Landlords table -->
+          <th style="width: 11%">Date</th>
+          <th style="width: 11%">Tenant Ids</th>
+          <th style="width: 11%">Landlord Id</th>
+          <th style="width: 11%">Fee</th>
+          <th style="width: 11%">Contract Length</th>
+          <th style="width: 11%">Property Type</th>
+          <th style="width: 11%">Address ID</th>
+          <th class="text-center" style="width: 23%">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each contract}}
+        <tr > <!-- Rows for each Landlord saved -->
+          <td style="width: 11%">"{{date}}"</td>
+          <td style="width: 11%">{{tenants}}</td>
+          <td style="width: 11%">"{{landlord}}"</td>
+          <td style="width: 11%">{{fee}}</td>
+          <td style="width: 11%">"{{contractLength}}"</td>
+          <td style="width: 11%">"{{propertyType}}"</td>
+          <td style="width: 11%">"{{addressID}}"</td>
+          <td class="text-right" style="width: 23%">
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{_id}}" data-date="{{date}}" data-tenants="{{tenants}}" data-landlord="{{landlord}}" 
+            data-fee="{{fee}}" data-contractLength="{{contractLength}}" data-propertyType="{{propertyType}}" data-addressID="{{addressID}}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <!-- Below table -->
+    <div>
+        <!-- Add Contract button-->
+        <button class="btn btn-primary mr-5" data-toggle="modal" data-target="#addContractModal">Add</button>
+        <br></br>
+        <br></br>
+        <!-- Search Conract -->
+        <div class="input-group mb-3" style ="width: 100%;">
+            <input class="form-control py-2  border" type="search" placeholder="Find a Contract by Landlord ID" id="searchContract" style="width: 25%";> 
+            <button class="btn btn-success" type="button" id="contractSearchButton" style="width: 20%">Find</button>
+        </div>
+    </div>
+  </div>
+  <br></br>
+<!-- CONTRACTS SECTION --> 
+
+    <!-- Modal Add Tenants-->
+    <form id="addTenant" action="/tenants" method="POST">
+    <!-- For css bootstrap libraries used-->
+        <div class="modal fade" id="addTenantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h3 class="modal-title" id="exampleModalLabel">Add New Tenant</h3>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <h5 class="modal-title" id="tenantInfoLabel">Tenant Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+                <div class="form-group">
+                   <label for = "title">Title</label>
+                    <select id="title" name="title" class="form-select">
+                        <option value = "">Please select:</option>
+                        <option value = "Mx">Mx</option>
+                        <option value = "Miss">Miss</option>
+                        <option value = "Ms">Ms</option>
+                        <option value = "Mr">Mr</option>
+                        <option value = "Dr">Dr</option>
+                        <option value = "Other">Other</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fname" class="form-control" placeholder="First Name*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lname" class="form-control" placeholder="Surname*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="mobile" class="form-control" placeholder="Mobile*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email*" required>
+               </div>
+               <h5 class="modal-title" id="addressLabel">Address:</h5>
+               <div class="form-group">
+                   <input type="text" name="addressLine1" class="form-control" placeholder="Address Line 1*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="addressLine2" class="form-control" placeholder="Address Line 2">
+               </div>
+               <div class="form-group">
+                   <input type="text" name="town" class="form-control" placeholder="Town*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="county" class="form-control" placeholder="County*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="eircode" class="form-control" placeholder="Eircode">
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+    </form>
+
+    <!-- Modal Update Tenants -->
+    <form id="updateTenant" action="/tenants" method="PATCH"> 
+       <div class="modal fade" id="updateTenantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Update Tenant Info</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="tenantInfoLabel">Tenant Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+                <div class="form-group">
+                   <label for = "title">Title</label>
+                    <select id="title" name="title" class="form-select title">
+                        <option value = "">Please select:</option>
+                        <option value = "Mx">Mx</option>
+                        <option value = "Miss">Miss</option>
+                        <option value = "Ms">Ms</option>
+                        <option value = "Mr">Mr</option>
+                        <option value = "Dr">Dr</option>
+                        <option value = "Other">Other</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fname" class="form-control fname" placeholder="First Name*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lname" class="form-control lname" placeholder="Surname*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="mobile" class="form-control mobile" placeholder="Mobile*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control email" placeholder="Email*" required>
+               </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="_id" class="id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+    </form>
+
+    <!-- Modal Delete Tenants-->
+    <form id="deleteTenant" action="/tenants" method="DELETE"> 
+       <div class="modal fade" id="deleteTenantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Update Tenant Info</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="tenantInfoLabel">Tenant Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+                <div class="form-group">
+                   <label for = "title">Title</label>
+                    <select id="title" name="title" class="form-select title">
+                        <option value = "">Please select:</option>
+                        <option value = "Mx">Mx</option>
+                        <option value = "Miss">Miss</option>
+                        <option value = "Ms">Ms</option>
+                        <option value = "Mr">Mr</option>
+                        <option value = "Dr">Dr</option>
+                        <option value = "Other">Other</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fname" class="form-control fname" placeholder="First Name*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lname" class="form-control lname" placeholder="Surname*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="mobile" class="form-control mobile" placeholder="Mobile*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control email" placeholder="Email*" required>
+               </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="_id" class="id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </div>
+          </div>
+        </div>
+       </div>
+    </form>
+
+    <!-- Modal Add Landlord-->
+    <form id="addLandlord" action="/landlords" method="POST">
+    <!-- For css bootstrap libraries used-->
+        <div class="modal fade" id="addLandlordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h3 class="modal-title" id="exampleModalLabel">Add New Landlord</h3>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <h5 class="modal-title" id="landlordInfoLabel">Landlord Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+                <div class="form-group">
+                   <label for = "title">Title</label>
+                    <select id="title" name="title" class="form-select">
+                        <option value = "">Please select:</option>
+                        <option value = "Mx">Mx</option>
+                        <option value = "Miss">Miss</option>
+                        <option value = "Ms">Ms</option>
+                        <option value = "Mr">Mr</option>
+                        <option value = "Dr">Dr</option>
+                        <option value = "Other">Other</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fname" class="form-control" placeholder="First Name*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lname" class="form-control" placeholder="Surname*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="mobile" class="form-control" placeholder="Mobile*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email*" required>
+               </div>
+                <div class="form-group">
+                   <input type="text" name="dob" class="form-control" placeholder="Date of Birth*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="permit" class="form-control" placeholder="Permit*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="emailContact" class="form-control" placeholder="Email Contact*" required>
+               </div>
+               <h5 class="modal-title" id="addressLabel">Address:</h5>
+               <div class="form-group">
+                   <input type="text" name="addressLine1" class="form-control" placeholder="Address Line 1*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="addressLine2" class="form-control" placeholder="Address Line 2">
+               </div>
+               <div class="form-group">
+                   <input type="text" name="town" class="form-control" placeholder="Town*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="county" class="form-control" placeholder="County*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="eircode" class="form-control" placeholder="Eircode">
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+    </form>
+
+    <!-- Modal Update Landlord -->
+    <form id="updateLandlord" action="/landlords" method="PATCH"> 
+       <div class="modal fade" id="updateLandlordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Update Landlord Info</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="landlordInfoLabel">Landlord Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+                <div class="form-group">
+                   <label for = "title">Title</label>
+                    <select id="title" name="title" class="form-select title">
+                        <option value = "">Please select:</option>
+                        <option value = "Mx">Mx</option>
+                        <option value = "Miss">Miss</option>
+                        <option value = "Ms">Ms</option>
+                        <option value = "Mr">Mr</option>
+                        <option value = "Dr">Dr</option>
+                        <option value = "Other">Other</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fname" class="form-control fname" placeholder="First Name*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lname" class="form-control lname" placeholder="Surname*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="mobile" class="form-control mobile" placeholder="Mobile*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control email" placeholder="Email*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="dob" class="form-control dob" placeholder="Date Of Birth*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="permit" class="form-control permit" placeholder="Permit*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="emailContact" class="form-control emailContact" placeholder="Email Contact*" required>
+               </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="_id" class="id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+    </form>
+
+    <!-- Modal Delete Landlords-->
+    <form id="deleteLandlord" action="/landlords" method="DELETE"> 
+       <div class="modal fade" id="deleteLandlordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Delete Landlord Info</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="landlordInfoLabel">Landlord Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+                <div class="form-group">
+                   <label for = "title">Title</label>
+                    <select id="title" name="title" class="form-select title">
+                        <option value = "">Please select:</option>
+                        <option value = "Mx">Mx</option>
+                        <option value = "Miss">Miss</option>
+                        <option value = "Ms">Ms</option>
+                        <option value = "Mr">Mr</option>
+                        <option value = "Dr">Dr</option>
+                        <option value = "Other">Other</option>
+                    </select>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fname" class="form-control fname" placeholder="First Name*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="lname" class="form-control lname" placeholder="Surname*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="mobile" class="form-control mobile" placeholder="Mobile*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control email" placeholder="Email*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="dob" class="form-control dob" placeholder="dob*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="permit" class="form-control permit" placeholder="permit*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="emailContact" class="form-control emailContact" placeholder="emailContact*" required>
+               </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="_id" class="id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </div>
+          </div>
+        </div>
+       </div>
+    </form>
+
+    <!-- Modal Add Contract-->
+    <form id="addContract" action="/contracts" method="POST">
+    <!-- For css bootstrap libraries used-->
+        <div class="modal fade" id="addContractModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h3 class="modal-title" id="exampleModalLabel">Add New Contract</h3>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <h5 class="modal-title" id="contractInfoLabel">Contract Info:</h5>
+                <br></br>
+                <!--SELECT TITLE-->
+               <div class="form-group">
+                   <input type="text" name="date" class="form-control" placeholder="Date*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="tenants" class="form-control" placeholder="Tenants*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="landlord" class="form-control" placeholder="Landlord*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="fee" class="form-control" placeholder="Fee*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="contractLength" class="form-control" placeholder="Contract Length*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="propertyType" class="form-control" placeholder="Property Type">
+               </div>
+               <h5 class="modal-title" id="addressLabel">Address:</h5>
+               <div class="form-group">
+                   <input type="text" name="addressLine1" class="form-control" placeholder="Address Line 1*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="addressLine2" class="form-control" placeholder="Address Line 2">
+               </div>
+               <div class="form-group">
+                   <input type="text" name="town" class="form-control" placeholder="Town*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="county" class="form-control" placeholder="County*" required>
+               </div>
+               <div class="form-group">
+                   <input type="text" name="eircode" class="form-control" placeholder="Eircode">
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+    </form>
+
+
+    <!-- START/ USED FROM ONLIN LECTURES BY MR. JOHN KEATING - FOR TESTING PURPOSES-->
+    <!-- Operation Successful Alert Modal -->
+    <div class="modal fade" id="successAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="alert alert-success" role="alert">
+                <strong>Oh Great!</strong> RESTful Operation was Successful!
+            </div>
+        </div>
+    </div>
+
+    <!-- Operation Unsuccessful Alert Modal -->
+    <div class="modal fade" id="errorAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="alert alert-danger" role="alert">
+                <strong>Oh No!</strong> RESTful Operation was Unsuccessful!
+            </div>
+        </div>
+    </div>
+     <!-- END/ USED FROM ONLIN LECTURES BY MR. JOHN KEATING - FOR TESTING PURPOSES-->
+ </div>
+ 
+
+<script>
+    $(document).ready(function(){
+
+        //TENANTS
+
+        // Handle/AddTenantModal/Tenants
+        var addTenant = $("#addTenant");
+        addTenant.submit(function(e){
+            e.preventDefault(); // prevent handling the normal form submit click!
+
+            //Extract Data to output in console
+            var tenant = {
+                title: $("#title").val(),
+                fname: $("#fname").val(),
+                lname: $("#lname").val(),
+                mobile: $("#mobile").val(),
+                email: $("#email").val(),
+                addressline1: $("#addressLine1").val(),
+                addressline2: $("#addressLine2").val(),
+                town: $("#town").val(),
+                countyCity: $("#county").val(),
+                eircode: $("#eircode").val(),
+            };
+            console.log(tenant);
+            $.ajax({
+                type: addTenant.attr('method'),
+                url:  addTenant.attr('action'),
+                data: addTenant.serialize(), // get data from form!
+                success: function (data) {
+                    console.log('Update successful!');
+                    $('#successAlert').modal('show');
+                    //Redirecting back to start
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.'); //ALERT
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Back to start 
+                    }, 3000);
+                },
+            });
+            $('#addTenantModal').modal('hide');
+        });
+        
+        // SetUp/UpdateTenantModal/Tenants
+        $('#tenantsTable').on('click','.update',function(){
+            //Extracting all data displyed
+            var _id = $(this).data('id');
+            var title = $(this).data('title');
+            var fname = $(this).data('fname');
+            var lname = $(this).data('lname');
+            var mobile = $(this).data('mobile');
+            var email = $(this).data('email');
+            var addressID = $(this).data('addressID');
+            $('#updateTenantModal').modal('show');
+            //Showing data display on form 
+            $('._id').val(_id);
+            $('.title').val(title);
+            $('.fname').val(fname);
+            $('.lname').val(lname);
+            $('.mobile').val(mobile);
+            $('.email').val(email);
+            $('.addressID').val(addressID);
+        });
+
+        //Handle/UpdateTenantModal/Tenants
+        var updateTenant = $("#updateTenant");
+        updateTenant.submit(function(e){
+            e.preventDefault(); 
+            var id = updateTenant.find('input[name="_id"]').val();  //Look for matching id from tenant
+            $.ajax({
+                type: updateTenant.attr('method'),
+                url:  updateTenant.attr('action'),
+                data: updateTenant.serialize(), // get data from form JSON to pass in body
+                success: function (data) {
+                    console.log('Update successful!');
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            $('#updateTenantModal').modal('hide');
+        });
+
+        // SetUp/DeleteTenantModal/Tenants
+        $('#tenantsTable').on('click','.delete',function(){
+            //Extracting all data displyed
+            var _id = $(this).data('id');
+            var title = $(this).data('title');
+            var fname = $(this).data('fname');
+            var lname = $(this).data('lname');
+            var mobile = $(this).data('mobile');
+            var email = $(this).data('email');
+            var addressID = $(this).data('addressID');
+            //Showing data display on form 
+            $('#deleteTenantModal').modal('show');
+            $('._id').val(_id);
+            $('.title').val(title);
+            $('.fname').val(fname);
+            $('.lname').val(lname);
+            $('.mobile').val(mobile);
+            $('.email').val(email);
+            $('.addressID').val(addressID);
+        });
+        
+        // Handle/DeleteTenantModal/Tenants
+        var deleteTenant = $("#deleteTenant");
+        deleteTenant.submit(function(e){
+            e.preventDefault(); 
+            var id = deleteTenant.find('input[name="_id"]').val(); //Look for matching id from tenant
+            var idAddress = deleteTenant.find('input[name="addressID"]').val();     
+            $.ajax({
+                type: deleteTenant.attr('method'),
+                url:  deleteTenant.attr('action'),
+                data: deleteTenant.serialize(), // get data from form JSON to pass in body
+                success: function (data) {
+                    console.log('Delete successful!');
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            $('#deleteTenantModal').modal('hide');
+        });
+
+        // Handle/Request/Tenants
+        $("#tenantSearchButton").on('click',function() {
+            var tenant = {
+                email: $("#searchTenants").val()
+            }
+            console.log(tenant);
+            $.ajax({
+                type: "PUT",
+                url:  "http://localhost:3000/tenants",
+                data: tenant, // Pass info as JSON object (API function will extract relevant info)
+                success: function (data) {
+                    console.log('Search successful!');
+                    alert(JSON.stringify(data, null, 2)); //display as popup (not prettiest but works)
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            e.preventDefault();
+            
+        });
+        
+        //LANDLORDS
+
+        // Handle/AddLandlordModal/Landlords
+        var addLandlord = $("#addLandlord");
+        addLandlord.submit(function(e){
+            e.preventDefault();
+
+            //Extract Data to output in console
+            var landlord = {
+                title: $("#title").val(),
+                fname: $("#fname").val(),
+                lname: $("#lname").val(),
+                mobile: $("#mobile").val(),
+                email: $("#email").val(),
+                dob: $("#dob").val(),
+                permit: $("#permit").val(),
+                emailContact: $("#emailContact").val(),
+                addressline1: $("#addressLine1").val(),
+                addressline2: $("#addressLine2").val(),
+                town: $("#town").val(),
+                countyCity: $("#county").val(),
+                eircode: $("#eircode").val(),
+            };
+            console.log(landlord);
+            $.ajax({
+                type: addLandlord.attr('method'),
+                url:  addLandlord.attr('action'),
+                data: addLandlord.serialize(), // get data from form!
+                success: function (data) {
+                    console.log('Update successful!');
+                    $('#successAlert').modal('show');
+                    //Redirecting back to start
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.'); //ALERT
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Back to start 
+                    }, 3000);
+                },
+            });
+            $('#addLandlordModal').modal('hide');
+        });
+        
+        // SetUp/UpdateLandlordModal/Landlords
+        $('#landlordsTable').on('click','.update',function(){
+            //Extracting all data displyed
+            var _id = $(this).data('id');
+            var title = $(this).data('title');
+            var fname = $(this).data('fname');
+            var lname = $(this).data('lname');
+            var mobile = $(this).data('mobile');
+            var email = $(this).data('email');
+            var dob = $(this).data('dob');
+            var permit = $(this).data('permit');
+            var emailContact = $(this).data('emailContact');
+            var addressID = $(this).data('addressID');
+            $('#updateLandlordModal').modal('show');
+            //Showing data display on form 
+            $('._id').val(_id);
+            $('.title').val(title);
+            $('.fname').val(fname);
+            $('.lname').val(lname);
+            $('.mobile').val(mobile);
+            $('.email').val(email);
+            $('.dob').val(dob);
+            $('.permit').val(permit);
+            $('.emailContact').val(emailContact);
+            $('.addressID').val(addressID);
+        });
+
+        //Handle/UpdateLandlordModal/Landlords
+        var updateLandlord = $("#updateLandlord");
+        updateLandlord.submit(function(e){
+            e.preventDefault(); 
+            var id = updateLandlord.find('input[name="_id"]').val();  //Look for matching id from tenant
+            $.ajax({
+                type: updateLandlord.attr('method'),
+                url:  updateLandlord.attr('action'),
+                data: updateLandlord.serialize(), // get data from form JSON to pass in body
+                success: function (data) {
+                    console.log('Update successful!');
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            $('#updateLandlordModal').modal('hide');
+        });
+        
+        // SetUp/DeleteLandlordModal/Landlord
+        $('#landlordsTable').on('click','.delete',function(){
+            //Extracting all data displyed
+            var _id = $(this).data('id');
+            var title = $(this).data('title');
+            var fname = $(this).data('fname');
+            var lname = $(this).data('lname');
+            var mobile = $(this).data('mobile');
+            var email = $(this).data('email');
+            var dob = $(this).data('dob');
+            var permit = $(this).data('permit');
+            var emailContact = $(this).data('emailContact');
+            var addressID = $(this).data('addressID');
+            //Showing data display on form 
+            $('#deleteLandlordModal').modal('show');
+            $('._id').val(_id);
+            $('.title').val(title);
+            $('.fname').val(fname);
+            $('.lname').val(lname);
+            $('.mobile').val(mobile);
+            $('.email').val(email);
+            $('.dob').val(dob);
+            $('.permit').val(permit);
+            $('.emailContact').val(emailContact);
+            $('.addressID').val(addressID);
+        });
+        
+        // Handle/DeleteTenantModal/Tenants
+        var deleteLandlord = $("#deleteLandlord");
+        deleteLandlord.submit(function(e){
+            e.preventDefault(); 
+            var id = deleteLandlord.find('input[name="_id"]').val(); //Look for matching id from tenant   
+            $.ajax({
+                type: deleteLandlord.attr('method'),
+                url:  deleteLandlord.attr('action'),
+                data: deleteLandlord.serialize(), // get data from form JSON to pass in body
+                success: function (data) {
+                    console.log('Delete successful!');
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            $('#deleteLandlordModal').modal('hide');
+        });
+        
+        // Handle/Request/Landlord
+        $("#landlordSearchButton").on('click',function() {
+            var landlord = {
+                email: $("#searchLandlord").val()
+            }
+            console.log(landlord);
+            $.ajax({
+                type: "PUT",
+                url:  "http://localhost:3000/landlords",
+                data: landlord, // Pass info as JSON object (API function will extract relevant info)
+                success: function (data) {
+                    console.log('Search successful!');
+                    alert(JSON.stringify(data, null, 2)); //display as popup (not prettiest but works)
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            e.preventDefault();
+            
+        });
+
+        //CONTRACTS
+        // Handle/AddContractModal/Contracts
+        var addContract = $("#addContract");
+        addContract.submit(function(e){
+            e.preventDefault();
+
+            //Extract Data to output in console
+            var landlord = {
+                date: $("#date").val(),
+                tenants: $("#tenants").val(),
+                landlord: $("#landlord").val(),
+                fee: $("#fee").val(),
+                contractLength: $("#contractLength").val(),
+                propertyType: $("#propertyType").val(),
+                addressID: $("#addressID").val(),
+            };
+            console.log(landlord);
+            $.ajax({
+                type: addLandlord.attr('method'),
+                url:  addLandlord.attr('action'),
+                data: addLandlord.serialize(), // get data from form!
+                success: function (data) {
+                    console.log('Update successful!');
+                    $('#successAlert').modal('show');
+                    //Redirecting back to start
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/')
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.'); //ALERT
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Back to start 
+                    }, 3000);
+                },
+            });
+            $('#addLandlordModal').modal('hide');
+        });
+
+        // Handle/Request/Contract
+        $("#contractSearchButton").on('click',function() {
+            var contract = {
+                landlord: $("#searchContract").val()
+            }
+            console.log(contract);
+            $.ajax({
+                type: "PUT",
+                url:  "http://localhost:3000/contracts",
+                data: contract, // Pass info as JSON object (API function will extract relevant info)
+                success: function (data) {
+                    console.log('Search successful!');
+                    alert(JSON.stringify(data, null, 2)); //display as popup (not prettiest but works)
+                    $('#successAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    $('#errorAlert').modal('show');
+                    var timer = setTimeout(function() {
+                        $(location).attr('href', '/') //Redirecting back to start
+                    }, 3000);
+                },
+            });
+            e.preventDefault();
+            
+        });
+
+        //  If there is a database filter then add a badge
+        if ($(location).attr('pathname') !== '/') {
+           $('#databaseFilterNotice').text("("+$(location).attr('pathname')+")");
+        }
+    });
+</script>
+</body>
+</html>

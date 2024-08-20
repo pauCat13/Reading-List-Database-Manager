@@ -1,0 +1,12 @@
+h1 {
+    font: 30px Verdana;
+    text-align: center;
+  }
+  h2 {
+    font: 20px Verdana;
+    text-align: center;
+  }
+  legend {
+    padding: 10px;
+    font: 30px Verdana
+  }
